@@ -17,13 +17,13 @@ def main():
     parser = argparse.ArgumentParser(description="build minigenome fasta",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument("--intervals_bed", type=str, required=True, help="intervals bed file")
+    parser.add_argument("--intervals", type=str, required=True, help="intervals bed file")
     parser.add_argument("--genome", type=str, required=True, help="genome fasta file")
     parser.add_argument("--spacer_len", type=int, required=False, default=10, help="length of N spacer between sequence regions")
 
     args = parser.parse_args()
 
-    intervals_bed_file = args.intervals_bed
+    intervals_file = args.intervals
     genome_fasta_file = args.genome
     Nspacer_length = args.spacer_len
 
@@ -32,8 +32,8 @@ def main():
         subprocess.check_call(f"samtools faidx {genome_fasta_file}", shell=True)
 
 
-    logger.info("parsing {}".format(intervals_bed_file))
-    intervals = pd.read_csv(intervals_bed_file, sep="\t", header=None)
+    logger.info("parsing {}".format(intervals_file))
+    intervals = pd.read_csv(intervals_file, sep="\t", header=None)
     intervals = intervals.iloc[:,[0,1,2]]
     intervals.columns = ["Chromosome", "Start", "End"]
 
