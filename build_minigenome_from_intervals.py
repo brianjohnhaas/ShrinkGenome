@@ -19,11 +19,13 @@ def main():
 
     parser.add_argument("--intervals_bed", type=str, required=True, help="intervals bed file")
     parser.add_argument("--genome", type=str, required=True, help="genome fasta file")
+    parser.add_argument("--spacer_len", type=int, required=False, default=10, help="length of N spacer between sequence regions")
 
     args = parser.parse_args()
 
     intervals_bed_file = args.intervals_bed
     genome_fasta_file = args.genome
+    Nspacer_length = args.spacer_len
 
     if not os.path.exists(f"{genome_fasta_file}.fai"):
         logger.info(f"Creating fasta index {genome_fasta_file}.fai")
@@ -49,7 +51,6 @@ def main():
     chromosomes = intervals.Chromosome.unique()
     logger.info("Have chromosomes: {}".format(chromosomes))
     
-    Nspacer_length = 10
     Nspacer = "N" * Nspacer_length
 
     minigenome_bed_ofh = open("minigenome.coord_translation.tsv", 'wt')
