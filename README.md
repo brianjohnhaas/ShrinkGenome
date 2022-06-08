@@ -8,6 +8,7 @@ Involves three steps:
 
 ```
 ./define_functional_regions_of_genome.py -h
+
 usage: define_functional_regions_of_genome.py [-h] --input_spec INPUT_SPEC
                                               [--output OUTPUT]
 
@@ -38,15 +39,15 @@ The above generates an output file containing the merged intervals (eg. merged_i
 
 ```
 ./build_minigenome_from_intervals.py -h
-usage: build_minigenome_from_intervals.py [-h] --intervals_bed INTERVALS_BED
-                                          --genome GENOME
-                                          [--spacer_len SPACER_LEN]
+
+usage: build_minigenome_from_intervals.py [-h] --intervals INTERVALS --genome
+                                          GENOME [--spacer_len SPACER_LEN]
 
 build minigenome fasta
 
 optional arguments:
   -h, --help            show this help message and exit
-  --intervals_bed INTERVALS_BED
+  --intervals INTERVALS
                         intervals bed file (default: None)
   --genome GENOME       genome fasta file (default: None)
   --spacer_len SPACER_LEN
@@ -56,4 +57,9 @@ optional arguments:
 ```
 
 
+The above generates files:
+-  minigenome.fa  : the mini genome fasta file
+-  minigenome.coord_translation.tsv  : provides coordinate translations between the original genome and the minigenome.
 
+
+3. 
