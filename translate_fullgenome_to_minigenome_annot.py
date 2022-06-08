@@ -22,14 +22,12 @@ def main():
     parser.add_argument("--fullgenome_annot", type=str, required=True, help="input fullgenome gtf or gff3 file to translate coords")
     parser.add_argument("--translation_intervals", type=str, required=True, help="translation intervals tsv file")
     parser.add_argument("--output_gtf", type=str, required=True, help="output gtf filename")
-    parser.add_argument("--CPU", type=int, default=5, required=False, help="number of cores to use")
     
     args = parser.parse_args()
 
     fullgenome_annot_filename = args.fullgenome_annot
     translation_intervals_filename = args.translation_intervals
     output_gtf = args.output_gtf
-    CPU = args.CPU
     
     logger.info("parsing {}".format(fullgenome_annot_filename))
 

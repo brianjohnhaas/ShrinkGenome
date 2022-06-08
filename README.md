@@ -62,4 +62,31 @@ The above generates files:
 -  minigenome.coord_translation.tsv  : provides coordinate translations between the original genome and the minigenome.
 
 
-3. 
+3. Translate reference genome annotations to the minigenome
+
+Use the following to convert your reference gtf file to the minigenome version.  Note, ideally, this ref genome file is restricted to coordinates that were included when defining the functional regions for which the minigenome was defined.
+
+```
+./translate_fullgenome_to_minigenome_annot.py -h
+
+usage: translate_fullgenome_to_minigenome_annot.py [-h] --fullgenome_annot
+                                                   FULLGENOME_ANNOT
+                                                   --translation_intervals
+                                                   TRANSLATION_INTERVALS
+                                                   --output_gtf OUTPUT_GTF
+
+translate full genome gtf|gff3 to the minigenome gtf|gff3
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --fullgenome_annot FULLGENOME_ANNOT
+                        input fullgenome gtf or gff3 file to translate coords
+                        (default: None)
+  --translation_intervals TRANSLATION_INTERVALS
+                        translation intervals tsv file (default: None)
+  --output_gtf OUTPUT_GTF
+                        output gtf filename (default: None)
+
+```
+
+
